@@ -14,6 +14,8 @@ mostrarData(){
 }
 }
 
+let productosEnCarrito = JSON.parse(sessionStorage.getItem("carrito"))|| []
+
 const bebida1 = new Bebida(1,"Branca","Fernet", 1200, "./img/fernet.jpg")
 const bebida2 = new Bebida(2,"Bombay","Gin Tonic", 4500, "./img/bombay.jpg")
 const bebida3 = new Bebida(3,"Don Valentin", "Vino", 850, "./img/donvalentin.jpg")
@@ -48,10 +50,63 @@ const bebida20 = new Bebida(20,"White Hourse", "Whisky", 1900, "./img/whitehours
 
 const bodega = [bebida1, bebida2, bebida3, bebida4, bebida5, bebida6,bebida7,bebida8,bebida9,bebida10,bebida11,bebida12,bebida13,bebida14,bebida15,bebida16,bebida17,bebida18,bebida19,bebida20]
 console.log(bodega)
-const stock = []
-stock.push(bebida1, bebida2, bebida3, bebida4, bebida5, bebida6, bebida7,bebida8,bebida9,bebida10,bebida11,bebida12,bebida13, bebida14,bebida15,bebida16,bebida17,bebida18,bebida19,bebida20)
-console.log(stock)
 
+let stock = []
+if(localStorage.getItem("stock")){
+    stock = JSON.parse(localStorage.getItem("stock"))
+
+}
+else{
+    stock.push(bebida1, bebida2, bebida3, bebida4, bebida5, bebida6, bebida7,bebida8,bebida9,bebida10,bebida11,bebida12,bebida13, bebida14,bebida15,bebida16,bebida17,bebida18,bebida19,bebida20)
+    console.log(stock)
+}
+
+//guardar stock en el storage
+localStorage.setItem("stock", JSON.stringify(stock))
+
+//Dark mode
+    let btnDarkMode = document.getElementById("btn-dark")
+    let btnLightMode = document.getElementById("btn-light")
+
+    let modoOscuro
+
+    
+    if(localStorage.getItem("darkMode")){
+        modoOscuro = localStorage.getItem("darkMode")
+    }else{
+        console.log("Entro por primera vez")
+        localStorage.setItem("darkMode", false)
+    }
+    
+
+
+    if(modoOscuro == "true"){
+        document.body.style.backgroundColor = "black"
+    document.body.style.color = "grey"
+    
+    }else{
+        document.body.style.backgroundColor = "lightgreen"
+    document.body.style.color = "grey"
+    
+     }
+
+
+    
+    //evento darkmode
+btnDarkMode.addEventListener("click",()=>{
+    document.body.style.backgroundColor = "black"
+    document.body.style.color = "antiquewhite"
+    localStorage.setItem("darkMode",true)
+})
+    
+btnLightMode.addEventListener("click",()=>{
+    document.body.style.backgroundColor = "lightgreen"
+    document.body.style.color = "grey"
+    localStorage.setItem("darkMode",false)
+
+    
+
+})
 
 
 
@@ -69,39 +124,59 @@ function mostrarCatalogo(array){
     <div class="card-body">
       <h5 class="card-title">${bebida.marca}</h5>
       <p class="card-text">${bebida.tipo}</p>
-      <p class="card-text">${bebida.precio}</p>
+      <p class="${bebida.precio <= 2000 ? "ofertaColor" : "precioComun"} card-text">${bebida.precio}</p>
     
-      <a href="#" class="btnCompra btn btn-danger">Agregar al carrito</a>
+      <button id="btn-carrito${bebida.id}" class="btnCompra btn btn-danger">Agregar al carrito</button>
     </div>
     </div>
     </div>`
     divProductos.appendChild(nuevoProducto)
     
+    //boton carrito
+    
+    let btnAgregar = document.getElementById(`btn-carrito${bebida.id}`)
+    console.log(btnAgregar)
+    btnAgregar.addEventListener("click",()=>{
+        console.log(bebida)
+
+        agregarAlCarrito(bebida)
+    })
+    
     })
 }
 
-
-let btnCompra = document.querySelectorAll(".btnCompra")
-
-for(let compra of btnCompra){
-    
-   compra.addEventListener("click",()=>{
-       alert("El producto ha sido agregado al carrito")
-   } )
-
-}
-
-
- 
 //function nuevaBebida actualizada a inputs
 function guardarBebida(array){
     let bebidaInput = document.getElementById("bebidaInput")
     let marcaInput = document.getElementById("marcaInput")
     let precioInput = document.getElementById("precioInput")
+    
+    if(bebidaInput.value == "" || marcaInput.value == "" || precioInput.value == ""){
+
+        Toastify({
+            text: "Rellene todos los campos",
+            duration: 2000,
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, red, brown )",
+            },
+          }).showToast();
+    }else{
     let bebidaIngresada = new Bebida (array.length+1, bebidaInput.value, marcaInput.value, parseInt(precioInput.value), "./img/loading.jpg");
     
     console.log(bebidaIngresada)
     array.push(bebidaIngresada)
+
+    Swal.fire({
+        title : 'Su bebida ha sido agregada',
+        icon : "success",
+        timer : 2000,
+        })
+    
     mostrarCatalogo(array)
     console.log(array)
    
@@ -110,8 +185,23 @@ function guardarBebida(array){
     marcaInput.value = ""
     precioInput.value = "" 
 
+    //Libreria Toastify 
+    Toastify({
+        text: "Bebida guardada con exito",
+        duration: 2000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, blue, darkblue )",
+        },
+      }).showToast();
+    //guardar en el storage la bebida nueva ingresada
+    localStorage.setItem("stock", JSON.stringify(array))
 
-}
+}}
 
 let btnGuardar = document.getElementById("botonGuardar")
 btnGuardar.addEventListener("click",()=>{
@@ -123,12 +213,37 @@ btnMostrarCatalogo.addEventListener("click",()=>{
     mostrarCatalogo(stock)
 })
 
+
+
 //function ocultar catalogo
 function ocultarCatalogo(){
     divProductos.innerHTML = ""
 }
 let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
 btnOcultarCatalogo.onclick = ocultarCatalogo
+
+
+
+
+//function agregar al carrito
+function agregarAlCarrito(bebida){
+    productosEnCarrito.push(bebida)
+    console.log(productosEnCarrito)
+    sessionStorage.setItem("carrito", JSON.stringify(productosEnCarrito)) 
+
+    Swal.fire({
+        title : 'Ha agregado un producto',
+        icon : "success",
+        showCancelButton : true ,
+        confirmButtonText : "Acepto",
+        timer : 2000,
+        confirmButtonColor : "black",
+        text : `La bebida ${bebida.marca} ha sido agregada al carrito`,
+        imageHeight : 300,
+        imageWidth : 300,
+        imageAlt : 'No encontrada'
+        })
+}
 
 
 
@@ -150,7 +265,7 @@ function filtrarCerveza(){
      <p class="card-text">${bebida.tipo}</p>
      <p class="card-text">${bebida.precio}</p>
     
-     <a href="#" class="btnCompra btn btn-danger">Agregar al carrito</a>
+     <button id="btn-carrito${bebida.id}" class="btnCompra btn btn-danger">Agregar al carrito</button>
     </div>
     </div>
     </div>`
@@ -177,7 +292,7 @@ function filtrarVinos(){
      <p class="card-text">${bebida.tipo}</p>
      <p class="card-text">${bebida.precio}</p>
     
-     <a href="#" class="btnCompra btn btn-danger">Agregar al carrito</a>
+     <button id="btn-carrito${bebida.id}" class="btnCompra btn btn-danger">Agregar al carrito</button>
     </div>
     </div>
     </div>`
@@ -204,7 +319,7 @@ function filtrarWhisky(){
      <p class="card-text">${bebida.tipo}</p>
      <p class="card-text">${bebida.precio}</p>
     
-     <a href="#" class="btnCompra btn btn-danger">Agregar al carrito</a>
+     <button id="btn-carrito${bebida.id}" class="btnCompra btn btn-danger">Agregar al carrito</button>
     </div>
     </div>
     </div>`
@@ -231,7 +346,7 @@ function filtrarFernet(){
      <p class="card-text">${bebida.tipo}</p>
      <p class="card-text">${bebida.precio}</p>
     
-     <a href="#" class="btnCompra btn btn-danger">Agregar al carrito</a>
+     <button id="btn-carrito${bebida.id}" class="btnCompra btn btn-danger">Agregar al carrito</button>
     </div>
     </div>
     </div>`
@@ -258,7 +373,7 @@ function filtrarVodka(){
      <p class="card-text">${bebida.tipo}</p>
      <p class="card-text">${bebida.precio}</p>
     
-     <a href="#" class="btnCompra btn btn-danger">Agregar al carrito</a>
+    <button id ="btn-carrito${bebida.id}" class="btnCompra btn btn-danger">Agregar al carrito</button>
     </div>
     </div>
     </div>`
@@ -313,7 +428,7 @@ function filtrarVodka(){
     //filtro por buscador
     const inputBusqueda = document.getElementById("inputBuscador")
 
-    const buscador = document.querySelector(".fa-solid")
+    const buscador = document.getElementById("search")
     buscador.addEventListener("click",()=>{
         filtroBusqueda()
     })
@@ -336,7 +451,7 @@ function filtrarVodka(){
      <p class="card-text">${bebida.tipo}</p>
      <p class="card-text">${bebida.precio}</p>
     
-     <a href="#" class="btnCompra btn btn-danger">Agregar al carrito</a>
+     <button id="btn-carrito${bebida.id}" class="btnCompra btn btn-danger">Agregar al carrito</a>
     </div>
     </div>
     </div>`
@@ -350,6 +465,139 @@ function filtrarVodka(){
         
     }
 
+/* function eliminarBebida(array){
+    
+    let item = productosEnCarrito.find(bebida => bebida.id !== array)
+    let indice = productosEnCarrito.indexOf(item)
+    productosEnCarrito.splice(indice,1)
 
+    
+    
+    console.log("Su producto se ha quitado")
+   
+} */
+
+
+//DOM CARRITO
+let modalBody = document.getElementById("modal-body")
+let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
+let parrafoCompra = document.getElementById('precioTotal') 
+ 
+
+
+ 
+
+let buttonCarrito = document.getElementById(`botonCarrito`)
+
+ buttonCarrito.addEventListener("click",()=>{
+
+    cargarProductosCarrito(productosEnCarrito)
+}) 
+
+
+
+
+function cargarProductosCarrito (array){
+    modalBody.innerHTML = ""
+    array.forEach((productoCarrito)=>{
+
+        modalBody.innerHTML += `
+        <div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.id}" style="max-width: 540px;">
+            <img class="card-img-top" src="./${productoCarrito.imagen}" alt="${productoCarrito.tipo}">
+            <div class="card-body">
+                    <h4 class="card-title">${productoCarrito.marca}</h4>
+                
+                    <p class="card-text">$${productoCarrito.precio}</p> 
+                    <button id="botonEliminar" class= "btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </div>    
+        
+        
+        </div>
+`
+         
+
+  
+
+   let borrarProducto = document.getElementById(`botonEliminar`)
+   let id = productoCarrito.id
+ 
+    borrarProducto.addEventListener("click",()=>{
+    let productosIndex = productosEnCarrito.find(element => element.id == id)
+    productosEnCarrito.splice(productosIndex,1)
+    sessionStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+    cargarProductosCarrito(productosEnCarrito)
+    Toastify({
+        text: "Su producto se ha quitado",
+        duration: 2000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "black",
+        },
+      }).showToast();
+    
+})  
+})
+
+    //calcular el total
+    compraTotal(array)
+
+}
+
+
+
+
+
+function compraTotal(array){
+    let acumulador = 0
+
+    acumulador = array.reduce((acumulador, productoCarrito)=>{
+        return acumulador + productoCarrito.precio
+
+    },0)
+
+
+/* if(acumulador == 0){
+
+    parrafoCompra.innerHTML = ` <strong> No hay productos en el carrito </strong>`
+}
+    else{
+    parrafoCompra.innerHTML = `El total de su carrito es ${acumulador}`
+    } */
+
+    //optimizando con if ternario
+
+    acumulador == 0 ? parrafoCompra.innerHTML = ` <strong> No hay productos en el carrito </strong>` : parrafoCompra.innerHTML = `El total de su carrito es ${acumulador}`
+}
+
+
+
+
+
+
+
+
+
+//clase STORAGE/JSON
+
+let bebida1JSON = JSON.stringify(bebida1)
+
+localStorage.setItem("objetoBebidaJSON", bebida1JSON)
+
+let bebidaStorageJSON = JSON.parse(localStorage.getItem("objetoBebidaJSON"))
+
+console.log(bebida1JSON)
+console.log(bebidaStorageJSON)
+
+//Libreria Sweet Alert
+/* Swal.fire({
+    title : 'Ha agregado un producto',
+    icon : "success",
+    confirmButtonText : "Acepto",
+    timer : 2000,
+    }) */
 
     
