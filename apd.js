@@ -52,14 +52,17 @@ const bodega = [bebida1, bebida2, bebida3, bebida4, bebida5, bebida6,bebida7,beb
 console.log(bodega)
 
 let stock = []
-if(localStorage.getItem("stock")){
+
+localStorage.getItem("stock")? stock = JSON.parse(localStorage.getItem("stock")) : stock.push(bebida1, bebida2, bebida3, bebida4, bebida5, bebida6, bebida7,bebida8,bebida9,bebida10,bebida11,bebida12,bebida13, bebida14,bebida15,bebida16,bebida17,bebida18,bebida19,bebida20)
+console.log(stock)
+/* if(localStorage.getItem("stock")){
     stock = JSON.parse(localStorage.getItem("stock"))
 
 }
 else{
     stock.push(bebida1, bebida2, bebida3, bebida4, bebida5, bebida6, bebida7,bebida8,bebida9,bebida10,bebida11,bebida12,bebida13, bebida14,bebida15,bebida16,bebida17,bebida18,bebida19,bebida20)
     console.log(stock)
-}
+} */
 
 //guardar stock en el storage
 localStorage.setItem("stock", JSON.stringify(stock))
@@ -70,17 +73,21 @@ localStorage.setItem("stock", JSON.stringify(stock))
 
     let modoOscuro
 
+    localStorage.getItem("darkMode")? modoOscuro = localStorage.getItem("darkMode") : console.log("Entro por primera vez")
+    localStorage.setItem("darkMode", false)
     
-    if(localStorage.getItem("darkMode")){
+    /* if(localStorage.getItem("darkMode")){
         modoOscuro = localStorage.getItem("darkMode")
     }else{
         console.log("Entro por primera vez")
         localStorage.setItem("darkMode", false)
-    }
+    } */
     
 
 
-    if(modoOscuro == "true"){
+  /*   modoOscuro == "true" ? document.body.classList.add("modoOscuro") : document.body.classList.add("modoDia") */
+
+     if(modoOscuro == "true"){
         document.body.style.backgroundColor = "black"
     document.body.style.color = "grey"
     
@@ -88,20 +95,23 @@ localStorage.setItem("stock", JSON.stringify(stock))
         document.body.style.backgroundColor = "lightgreen"
     document.body.style.color = "grey"
     
-     }
+     } 
 
+     
 
     
     //evento darkmode
 btnDarkMode.addEventListener("click",()=>{
-    document.body.style.backgroundColor = "black"
-    document.body.style.color = "antiquewhite"
+ 
+     document.body.style.backgroundColor = "black"
+    document.body.style.color = "antiquewhite" 
     localStorage.setItem("darkMode",true)
 })
     
 btnLightMode.addEventListener("click",()=>{
-    document.body.style.backgroundColor = "lightgreen"
-    document.body.style.color = "grey"
+   
+     document.body.style.backgroundColor = "lightgreen"
+    document.body.style.color = "grey" 
     localStorage.setItem("darkMode",false)
 
     
@@ -208,9 +218,14 @@ btnGuardar.addEventListener("click",()=>{
     guardarBebida(stock)
 })
 
+
 let btnMostrarCatalogo = document.getElementById("verCatalogoBtn")
 btnMostrarCatalogo.addEventListener("click",()=>{
-    mostrarCatalogo(stock)
+    
+    setTimeout(()=>{
+        mostrarCatalogo(stock)
+
+    },2000)
 })
 
 
@@ -480,10 +495,55 @@ function filtrarVodka(){
 
 //DOM CARRITO
 let modalBody = document.getElementById("modal-body")
-let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
 let parrafoCompra = document.getElementById('precioTotal') 
- 
 
+
+//finalizar compra
+let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
+
+botonFinalizarCompra.addEventListener("click",()=>{
+finalizarCompra()
+})
+
+function finalizarCompra(){
+    //preguntar si esta seguro
+    Swal.fire({
+        title : 'Esta seguro de realizar la compra?',
+        icon : "info",
+        showCancelButton: true,
+        confirmButtonText : "Si, seguro",
+        cancelButtonText : "No, no quiero",
+        confirmButtonColor: 'green',
+        cancelButtonColor : 'red',
+        timer : 4000,
+        }).then((result)=>{
+            if(result.isConfirmed){
+                swal.fire({
+                    title: 'Compra realizada',
+                    icon: 'succes',
+                    confirmButtonColor: 'green',
+                    text: `Muchas gracias por su compra ha adquirido nuestros productos`
+
+                })
+                //resetear o llevar a cero el array de carrito
+                productosEnCarrito = []
+                sessionStorage.removeItem("carrito")
+
+            }else{
+                Swal.fire({
+                    title:'Compra no realizada',
+                    icon: 'info',
+                    text: 'La compra no ha sido realizada, sus productos siguen en el carrito',
+                    confirmButtonColor: 'green',
+                    timer: 3000
+                })
+            }
+        })
+    //resetear el array de carrito
+
+    //limpiar el dom, el modalBody
+
+}
 
  
 
@@ -543,7 +603,7 @@ function cargarProductosCarrito (array){
 })
 
     //calcular el total
-    compraTotal(array)
+    compraTotal(...array)
 
 }
 
@@ -551,7 +611,7 @@ function cargarProductosCarrito (array){
 
 
 
-function compraTotal(array){
+function compraTotal(...array){
     let acumulador = 0
 
     acumulador = array.reduce((acumulador, productoCarrito)=>{

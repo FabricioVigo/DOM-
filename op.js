@@ -66,3 +66,45 @@ console.log(personaje?.nombre || "El usuario no existe")
 const nombres = ["Juan","Pele","Seni","Fabro"]
 console.log(nombres)
 console.log(...nombres)
+
+
+//setTimeOut
+//Es una funcion para trabajar en asincronia
+//recibe dos parametros
+
+/* setTimeout(()=>{
+console.log("Buen dia coders")
+}, 4500)
+
+setTimeout(()=>{
+    console.log("Proximamente React")
+    }, 5000)
+
+    let time = 0
+    for(let letra of "hola"){
+        time += 1000
+        setTimeout(()=>{
+            console.log(letra)
+
+        },time)
+    } */
+    
+
+
+    //setInterval dos parametros, function y tiempo
+
+    let i = 0
+    const intervalo = setInterval(()=>{
+        i ++
+        console.log('tic' + i)
+
+        if(i >= 5){
+         clearInterval(intervalo) 
+         console.log("Se acabo el tic tac")
+        }
+    },1000)
+
+
+    
+
+

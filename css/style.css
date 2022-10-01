@@ -79,3 +79,11 @@ i{
 .precioComun{
     color:goldenrod;
 }
+.modoOscuro{
+    background-color: #110f2b;
+    color:rgb(134, 128, 128);
+}
+.modoDia{
+    background-color: rgb(240, 184, 112);
+    color:#181818;
+}
