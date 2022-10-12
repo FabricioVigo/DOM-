@@ -1,3 +1,143 @@
 [
-    
+    {
+        "id" : 1,
+        "marca" : "Branca",
+        "tipo" : "Fernet",
+        "precio" : 1200,
+        "imagen" : "./img/fernet.jpg"
+    },
+    {
+        "id" : 2,
+        "marca" : "Bombay",
+        "tipo" : "Gin Tonic",
+        "precio" : 4500,
+        "imagen" : "./img/bombay.jpg"
+    },
+    {
+        "id" : 3,
+        "marca" : "Don Valentin",
+        "tipo" : "Vino",
+        "precio" : 850,
+        "imagen" : "./img/donvalentin.jpg"
+    },
+    {
+        "id" : 4,
+        "marca" : "SKY",
+        "tipo" : "Vodka",
+        "precio" : 1100,
+        "imagen" : "./img/sky.jpg"
+    },
+    {
+        "id" : 5,
+        "marca" : "Distrito Federal",
+        "tipo" : "Tekila",
+        "precio" : 900,
+        "imagen" : "./img/df.jpg"
+    },
+    {
+        "id" : 6,
+        "marca" : "Red Label",
+        "tipo" : "Whisky",
+        "precio" : 3500,
+        "imagen" : "./img/redlabel.jpg"
+    },
+    {
+        "id" : 7,
+        "marca" : "Finca Las Moras",
+        "tipo" : "Vino",
+        "precio" : 890,
+        "imagen" : "./img/fincalasmoras.jpg"
+    },
+    {
+        "id" : 8,
+        "marca" : "DADA",
+        "tipo" : "Vino",
+        "precio" : 800,
+        "imagen" : "./img/dada.jpg"
+    },
+    {
+        "id" : 9,
+        "marca" : "Black Label",
+        "tipo" : "Whisky",
+        "precio" : 5500,
+        "imagen" : "./img/blacklabel.jpg"
+    },
+    {
+        "id" : 10,
+        "marca" : "Andes Ipa",
+        "tipo" : "Cerveza",
+        "precio" : 400,
+        "imagen" : "./img/andesipa.jpg"
+    },
+    {
+        "id" : 11,
+        "marca" : "Andes Roja",
+        "tipo" : "Cerveza",
+        "precio" : 350,
+        "imagen" : "./img/andesroja.jpg"
+    },
+    {
+        "id" : 12,
+        "marca" : "Andes Negra",
+        "tipo" : "Cerveza",
+        "precio" : 340,
+        "imagen" : "./img/andesnegra.jpg"
+    },
+    {
+        "id" : 13,
+        "marca" : "Absolut",
+        "tipo" : "Vodka",
+        "precio" : 3800,
+        "imagen" : "./img/absolut.jpg"
+    },
+    {
+        "id" : 14,
+        "marca" : "Pura Sangre",
+        "tipo" : "Vino",
+        "precio" : 1200,
+        "imagen" : "./img/purasangre.jpg"
+    },
+    {
+        "id" : 15,
+        "marca" : "El Enemigo",
+        "tipo" : "Vino",
+        "precio" : 1500,
+        "imagen" : "./img/elenemigo.jpg"
+    },
+    {
+        "id" : 16,
+        "marca" : "Fond de Cave",
+        "tipo" : "Vino",
+        "precio" : 1100,
+        "imagen" : "./img/fondcave.jpg"
+    },
+    {
+        "id" : 17,
+        "marca" : "Bull Dog",
+        "tipo" : "Gin Tonic",
+        "precio" : 8500,
+        "imagen" : "./img/bulldog.jpg"
+    },
+    {
+        "id" : 18,
+        "marca" : "Malaria",
+        "tipo" : "Gin Tonic",
+        "precio" : 6900,
+        "imagen" : "./img/malaria.jpg"
+    },
+    {
+        "id" : 19,
+        "marca" : "1882",
+        "tipo" : "Fernet",
+        "precio" : 850,
+        "imagen" : "./img/1882.jpg"
+    },
+    {
+        "id" : 20,
+        "marca" : "White Hourse",
+        "tipo" : "Whisky",
+        "precio" : 1900,
+        "imagen" : "./img/whitehourse.jpg"
+    }
 ]
+

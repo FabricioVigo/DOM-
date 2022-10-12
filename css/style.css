@@ -2,6 +2,14 @@
 *{
     font-family: 'roboto';
 }
+
+.navbar{
+    background-color: #ddc699;
+}
+.container-fluid{
+    display: flex;
+    justify-content: space-around;
+}
 .titulo{
     text-align: center;
     font-size: 4em;
@@ -25,23 +33,24 @@
     /* background-image: linear-gradient(blue,rgb(10, 10, 151),rgb(10, 10, 65)); */
     display:flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items:center;
     flex-wrap: wrap;
     gap:40px;
     margin:0 auto;
-    padding: 25px;
+    padding: 80px;
 }
 .card{
-    box-shadow: 1px 1px 2px lightslategray;
+    box-shadow: 0.4px 1px 2px #181818;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    
 }
 img{
-    height: 400px;
-    width: 400px;
-    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    object-fit:contain;
 }
 .card-title{
     font-size:24px;
@@ -79,11 +88,27 @@ i{
 .precioComun{
     color:goldenrod;
 }
-.modoOscuro{
-    background-color: #110f2b;
-    color:rgb(134, 128, 128);
+#side_nav{
+    background-color: #000;
+    min-width: 250px;
+    max-width: 250px;
 }
-.modoDia{
-    background-color: rgb(240, 184, 112);
-    color:#181818;
+.content{
+    min-height: 100vh;
+    /* width: 100%; */
+}
+hr.h-color{
+    background:#eee;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.sidebar li.active{
+    background-color: #eee;
+    border-radius: 8px;
+}
+.sidebar li.active a, .sidebar li.active a:hover{
+    color:#000;
 }
