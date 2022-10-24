@@ -138,6 +138,41 @@
         "tipo" : "Whisky",
         "precio" : 1900,
         "imagen" : "./img/whitehourse.jpg"
+    },
+    {
+        "id" : 21,
+        "marca" : "Brahma",
+        "tipo" : "Cerveza",
+        "precio" : 200,
+        "imagen" : "./img/brahma.jpg"
+    },
+    {
+        "id" : 22,
+        "marca" : "Heineken",
+        "tipo" : "Cerveza",
+        "precio" : 300,
+        "imagen" : "./img/heineken.jpg"
+    },
+    {
+        "id" : 23,
+        "marca" : "Corona",
+        "tipo" : "Cerveza",
+        "precio" : 400,
+        "imagen" : "./img/corona.jpg"
+    },
+    {
+        "id" : 24,
+        "marca" : "Stella",
+        "tipo" : "Cerveza",
+        "precio" : 350,
+        "imagen" : "./img/stella.jpg"
+    },
+    {
+        "id" : 25,
+        "marca" : "Gordons",
+        "tipo" : "Gin Tonic",
+        "precio" : 1900,
+        "imagen" : "./img/gordons.jpg"
     }
 ]
 

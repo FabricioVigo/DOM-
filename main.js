@@ -1,10 +1,26 @@
-//function nuevaBebida actualizada a inputs
+document.addEventListener("DOMContentLoaded", ()=>{
+    const archivo = document.getElementById("archivo");
+    const botonFile = document.getElementById("boton-file")
+    botonFile.addEventListener("click", ()=>{
+        archivo.click();
+    });
+    archivo.addEventListener("change", ()=>{
+        for(let i = 0 ; i < archivo.files.length; i++){
+            const element = URL.createObjectURL(archivo.files[i]);
+            const imagen = document.createElement("img")
+            imagen.src = element;
+            document.body.appendChild(imagen)
+        }
+    });
+});
+
+
 function guardarBebida(array){
     let bebidaInput = document.getElementById("bebidaInput")
     let marcaInput = document.getElementById("marcaInput")
     let precioInput = document.getElementById("precioInput")
     
-    if(bebidaInput.value == "" || marcaInput.value == "" || precioInput.value == ""){
+    if(bebidaInput.value == "" || marcaInput.value == "" || precioInput.value == "" || archivo.value == ""){
 
         Toastify({
             text: "Rellene todos los campos",
@@ -19,16 +35,37 @@ function guardarBebida(array){
             },
           }).showToast();
     }else{
-    let bebidaIngresada = new Bebida (array.length+1, bebidaInput.value, marcaInput.value, parseInt(precioInput.value), "./img/loading.jpg");
+        let imgLoaded = archivo.value
+    let bebidaIngresada = new Bebida (array.length+1, bebidaInput.value, marcaInput.value, parseInt(precioInput.value), imgLoaded);
+    
+    let nuevoProducto  =  document.createElement("div")
+    nuevoProducto.innerHTML = `<div id=${bebidaIngresada.id} <div class="card" style="width: 14rem;">
+    <img src="${bebidaIngresada.imgLoaded}" class="card-img-top" alt="...">
+    <div class="card-body">
+     <h5 class="card-title">${bebidaIngresada.marca}</h5>
+     <p class="card-text">${bebidaIngresada.tipo}</p>
+     <p class="card-text">${bebidaIngresada.precio}</p>
+    
+     <button id="btn-carrito${bebidaIngresada.id}" class="btnCompra btn btn-danger">Agregar al carrito</button>
+    </div>
+    </div>
+    </div>`
+    divProductos.append(nuevoProducto)
+
+    let btnAgregar = document.getElementById(`btn-carrito${bebidaIngresada.id}`)
+    console.log(btnAgregar)
+    btnAgregar.addEventListener("click",()=>{
+        console.log(bebidaIngresada)
+
+        agregarAlCarrito(bebidaIngresada)
+    })
+
+    
+    
     
     console.log(bebidaIngresada)
     array.push(bebidaIngresada)
-
-    Swal.fire({
-        title : 'Su bebida ha sido agregada',
-        icon : "success",
-        timer : 2000,
-        })
+    console.log(stock)
     
    
     //reset
@@ -49,9 +86,10 @@ function guardarBebida(array){
           background: "linear-gradient(to right, blue, darkblue )",
         },
       }).showToast();
-    //guardar en el storage la bebida nueva ingresada
-    localStorage.setItem("stock", JSON.stringify(array))
+    
+    
 
+    localStorage.setItem("stock", JSON.stringify(array))
 }}
 
 let btnGuardar = document.getElementById("botonGuardar")
@@ -61,14 +99,14 @@ btnGuardar.addEventListener("click",()=>{
 
 
 
-
 //function agregar al carrito
 function agregarAlCarrito(bebida){
-    productosEnCarrito.push(bebida)
-    console.log(productosEnCarrito)
-    sessionStorage.setItem("carrito", JSON.stringify(productosEnCarrito)) 
 
-    Swal.fire({
+    let bebidaAgregada = productosEnCarrito.find((elem)=>(elem.id == bebida.id))
+    if(bebidaAgregada == undefined){ 
+        productosEnCarrito.push(bebida)
+        sessionStorage.setItem("carrito",JSON.stringify(productosEnCarrito))
+        Swal.fire({
         title : 'Ha agregado un producto',
         icon : "success",
         showCancelButton : true ,
@@ -80,6 +118,24 @@ function agregarAlCarrito(bebida){
         imageWidth : 300,
         imageAlt : 'No encontrada'
         })
+    }else{
+        Toastify({
+            text: "Producto ya agregado",
+            duration: 2000,
+            newWindow: true,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+              background: "brown",
+            },
+          }).showToast();
+        }
+
+  
+
+    
 }
 
 
@@ -95,7 +151,7 @@ function filtrarCerveza(){
     busqueda.forEach((bebida)=>{
        
      let nuevoProducto  =  document.createElement("div")
-    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 18rem;">
+    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 14rem;">
     <img src="${bebida.imagen}" class="card-img-top" alt="...">
     <div class="card-body">
      <h5 class="card-title">${bebida.marca}</h5>
@@ -134,7 +190,7 @@ function filtrarVinos(){
     busqueda.forEach((bebida)=>{
        
      let nuevoProducto  =  document.createElement("div")
-    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 18rem;">
+    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 14rem;">
     <img src="${bebida.imagen}" class="card-img-top" alt="...">
     <div class="card-body">
      <h5 class="card-title">${bebida.marca}</h5>
@@ -170,7 +226,7 @@ function filtrarWhisky(){
     busqueda.forEach((bebida)=>{
        
      let nuevoProducto  =  document.createElement("div")
-    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 18rem;">
+    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 14rem;">
     <img src="${bebida.imagen}" class="card-img-top" alt="...">
     <div class="card-body">
      <h5 class="card-title">${bebida.marca}</h5>
@@ -206,7 +262,7 @@ function filtrarFernet(){
     busqueda.forEach((bebida)=>{
        
      let nuevoProducto  =  document.createElement("div")
-    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 18rem;">
+    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 14rem;">
     <img src="${bebida.imagen}" class="card-img-top" alt="...">
     <div class="card-body">
      <h5 class="card-title">${bebida.marca}</h5>
@@ -241,7 +297,7 @@ function filtrarVodka(){
     busqueda.forEach((bebida)=>{
        
      let nuevoProducto  =  document.createElement("div")
-    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 18rem;">
+    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 14rem;">
     <img src="${bebida.imagen}" class="card-img-top" alt="...">
     <div class="card-body">
      <h5 class="card-title">${bebida.marca}</h5>
@@ -273,9 +329,6 @@ function filtrarVodka(){
            filtrarCerveza()
     })
 
-
-
-
     let searchVinos = document.getElementById("search-vinos")
     searchVinos.addEventListener("click",()=>{
         filtrarVinos()
@@ -292,9 +345,6 @@ function filtrarVodka(){
         filtrarWhisky()
     })
 
-
-
-
     let searchVodka = document.getElementById("search-vodka")
     searchVodka.addEventListener("click",()=>{
         filtrarVodka()
@@ -307,9 +357,11 @@ function filtrarVodka(){
 
     const buscador = document.getElementById("search")
     buscador.addEventListener("click",()=>{
+        
         filtroBusqueda()
     })
 
+    
 
     //funcion de buscador
     function filtroBusqueda(){
@@ -321,7 +373,7 @@ function filtrarVodka(){
     busquedaInput.forEach((bebida)=>{
        
      let nuevoProducto  =  document.createElement("div")
-    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 18rem;">
+    nuevoProducto.innerHTML = `<div id=${bebida.id} <div class="card" style="width: 14rem;">
     <img src="${bebida.imagen}" class="card-img-top" alt="...">
     <div class="card-body">
      <h5 class="card-title">${bebida.marca}</h5>
@@ -383,7 +435,7 @@ function finalizarCompra(){
                     text: `Muchas gracias por su compra ha adquirido nuestros productos`
 
                 })
-                //resetear o llevar a cero el array de carrito
+                
                 productosEnCarrito = []
                 sessionStorage.removeItem("carrito")
 
@@ -414,6 +466,7 @@ let buttonCarrito = document.getElementById(`botonCarrito`)
 
 let productosEnCarrito = JSON.parse(sessionStorage.getItem("carrito"))|| [] 
 
+
 function cargarProductosCarrito (array){
     modalBody.innerHTML = ""
     array.forEach((productoCarrito)=>{
@@ -433,13 +486,12 @@ function cargarProductosCarrito (array){
 `
          
 
-  
-
-   let borrarProducto = document.getElementById(`botonEliminar`)
+let borrarProducto = document.getElementById(`botonEliminar`)
    let id = productoCarrito.id
  
     borrarProducto.addEventListener("click",()=>{
     let productosIndex = productosEnCarrito.find(element => element.id == id)
+    
     productosEnCarrito.splice(productosIndex,1)
     sessionStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
     cargarProductosCarrito(productosEnCarrito)

@@ -1,37 +1,36 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/3734c82eac.js" crossorigin="anonymous"></script>
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<!-- SweetAlert -->
-<!-- Toastify -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-<title>Uso del DOM</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body>
+ <html lang="es">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://kit.fontawesome.com/3734c82eac.js" crossorigin="anonymous"></script>
+     <!-- CSS only -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+ <!-- Script simplyCountdown -->
+ <link rel="stylesheet" href="css/simplyCountdown.theme.default.css"/>
+ <!-- Toastify -->
+ <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+ <title>Uso del DOM</title>
+     <link rel="stylesheet" href="./css/style.css">
+ </head>
+ 
+ <body>
 
   <!-- NAVBAR -->
-
+ 
   <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <button id="btn-dark"><i class="fa-solid fa-moon"></i></button>
-    <button id="btn-light"><i class="fa-solid fa-sun"></i></button>
+    
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="./productos.html">Productos</a>
           </li>
           </li>
           
@@ -42,138 +41,186 @@
         </form>
               
                   <a id="botonCarrito" data-bs-toggle="modal" data-bs-target="#idModal" class="btn"><i class="fas fa-shopping-cart"></i></a>
-          
-      
-      <!-- modal carrito -->
-      
-      <div class="modal" tabindex="-1" id="idModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Carrito de Compras</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="#idmodal" aria-label="Close"></button>
+      </nav>
+
+                  <div class="container-fluid inicio">
+                    <div class="row">
+                      <div class="col-6 contador">
+                        <div class="title">
+                        <h1 class="title-h1 text-white mb-5">Aprovecha el 45% de descuento!</h1>
+                      </div>
+                      <div id="cuenta">
+
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="inicio__img">
+                        <img src="./img/banner-b.jpg" class="banner-img">
+                    </div>
+              
+              
+                    </div>
+              
+                      
+                  </div>
+                </div>
+                  
+              </header>
+              <main>
+              <div class="info">
+                  <h3 id="preciosCongelados" class="info__title"> <i class="fa-sharp fa-solid fa-question"></i>¿Porque Elegirnos?</h3>
+                  <h3 id="iconSweet" class="info__title"> 
+ 
+                    
+                    <i class="fa-solid fa-list-check"></i>Como funciona</h3>
+                  
               </div>
-              <div id="modal-body">
+              
+              <section>
+              
+                  
+                  <div class="container-fluid section-bebidas">
+              
+                      <h2 class="title-bebidas">¡Productos Destacados!</h2>
+                      <div class="row bebidas">
+                          <div class="card card-in" style="width: 18rem;">
+                              <img src="./img/corona.jpg" class="img-fluid card-img-top" alt="...">
+                              <div class="card-body">
+                                <h4 class="card-title">Cerveza Corona</h4>
+                                <p class="card-text">710 ml <strong>$430</strong></p>
+                                
+              
+                                <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                              </div>
+                            </div>
+                          <div class="col-3">
+                              <div class="card card-in" style="width: 18rem;">
+                                  <img src="./img/stella.jpg" class="img-fluid card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Cerveza Stella</h5>
+                                    <p class="card-text">710 ml <strong>$340</strong></p>
+                                    <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                                  </div>
+                                </div>
+                              
+                          </div>
+                          <div class="col-3">
+                              <div class="card card-in" style="width: 18rem;">
+                                  <img src="./img/brahma.jpg" class="img-fluid card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Cerveza Brahma</h5>
+                                    <p class="card-text">473 ml <strong>$240</strong></p>
+                                    <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                                  </div>
+                                </div>
+                              
+                          </div>
+                          <div class="col-3">
+                              <div class="card card-in" style="width: 18rem;">
+                                  <img src="./img/heineken.jpg" class="img-fluid card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Cerveza heineken</h5>
+                                    <p class="card-text">473 ml <strong>$250</strong></p>
+                                    <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                                  </div>
+                                </div>
+                          
+                          </div>
+                      </div>
+              
+                      <div class="row bebidas">
+                          <div class="card card-in" style="width: 18rem;">
+                              <img src="./img/andesipa.jpg" class="img-fluid card-img-top" alt="...">
+                              <div class="card-body">
+                                <h4 class="card-title">Andes Ipa</h4>
+                                <p class="card-text">1 L <strong>$550</strong></p>
+                                
+              
+                                <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                              </div>
+                            </div>
+                          <div class="col-3">
+                              <div class="card card-in" style="width: 18rem;">
+                                  <img src="./img/andesnegra.jpg" class="img-fluid card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Andes Negra</h5>
+                                    <p class="card-text">1 L <strong>$490</strong></p>
+                                    <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                                  </div>
+                                </div>
+                              
+                          </div>
+                          <div class="col-3">
+                              <div class="card card-in" style="width: 18rem;">
+                                  <img src="./img/andesroja.jpg" class="img-fluid card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Andes Roja</h5>
+                                    <p class="card-text">1 L <strong>$540</strong></p>
+                                    <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                                  </div>
+                                </div>
+                              
+                          </div>
+                          <div class="col-3">
+                              <div class="card card-in" style="width: 18rem;">
+                                  <img src="./img/fernet.jpg" class="img-fluid card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Fernet Branca</h5>
+                                    <p class="card-text">750 ml <strong>$1200</strong></p>
+                                    <a href="productos.html" class="btn btn-danger">Ver mas Productos</a>
+                                  </div>
+                                </div>
+                          
+                          </div>
+                          
+                      </div>
+                      <div class="boton">
+                      <a class="boton__link" href="./productos.html"> Ver todas las bebidas</a>
+                  </div>
+              
+                      
+                  </div>
+              </section>
+              <section class="variedad">
+                <div class="container-fluid">
+                  <div class="row">
+              
+                    <div class="col-5">
+                <h3 class="variedad__title">Otras opciones para <strong>salir de lo habitual</strong></h3>
                
               </div>
-              <div class="row ml-alto">
-                  <p id="precioTotal"></p>
-      
+              
+              
+              <div class="col-7">
+              <div class="carrusel">
+                <div class="carrusel__img"><img src="./img/bombay.jpg" alt="" class="carrusel__img">
+                </div>
+                <div class="carrusel__img"><img src="./img/gordons.jpg" alt="" class="carrusel__img">
+                </div>
+                <div class="carrusel__img"><img src="./img/malaria.jpg" alt="" class="carrusel__img">
+                </div>
+                
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" id="botonFinalizarCompra" class="btn btn-success">Finalizar Compra</button>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+              </div>
+              
+              </div>
+              
+              </section>
+              
+              
+            </main>
+            
+              
+              <!-- Fontawesome -->
+              <script src="https://kit.fontawesome.com/3734c82eac.js" crossorigin="anonymous"></script>
+              
+              <!-- Script simplyCountdown -->
+              <script src="simplyCountdown.min.js"></script>
+              <!-- JavaScript Bundle with Popper -->
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+               <!-- Sweet Alert -->
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-    
-
-
-  <div class="main">
-
-    <div class="main-container d-flex">
-      <div class="sidebar" id="side_nav">
-        <div class="header-box px-3 pb-4">
-          <h1 class="fs-4"><span class="bg-white text-dark rounded shadow px-2 me-2">CM</span>Bebidas</h1>
-          <button class="btn d-mb-none d-block close-btn px-1 text-white"><i class="fal fa-stream"></i></button>
-        </div>
-        <ul>
-          <li class="list-unstyled px-2"><a href="" class="text-decoration-none"><i class="fal fa-home"></i> Dashbord</a></li>
-          <li class="list-unstyled px-2"><a href="" class="text-decoration-none">Messages</a></li>
-          <li class="list-unstyled px-2"><a href="" class="text-decoration-none">Contact</a></li>
-          <li class="list-unstyled px-2"><a href="" class="text-decoration-none">Info</a></li>
-  
-        </ul>
-        <hr class="h-color mx-3">
-      </div>
-      <div class="content">
-  
-      </div>
-    </div>
- <div id="productos">
-        
-        
-
-    </div>
-
-
-  </div>
-  <h1 class="titulo">Cervezas Monte</h1>
-
-  <div class="row form-datos">
-<div class="col-5">
-  <form>
-      <label class="form-label" for="tipo">Ingrese tipo de bebida</label><br>
-      <input type="text" id="bebidaInput" name="tipo" class="form-control" required><br>
-      <label class="form-label" for="marca">Ingrese la marca</label><br>
-      <input type="text" id="marcaInput" name="marca" class="form-control" required><br>
-      <label class="form-label" for="precio">Ingrese el precio</label><br>
-      <input type="text" id="precioInput" name="precio" class="form-control" required><br>
-  </form>
-
-  <button id="botonGuardar" class="btn btn-danger">Guardar Bebida</button>
-  
-
-
-
-
-
-<div class="dropdown">
-  <button class="btn btn-danger dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Filtrar Por
-  </button>
-  <ul class="dropdown-menu">
-    
-      
-    <div class="filtro">
-      <h5>Cervezas</h5>
-      <input type="radio" id="search-cervezas">
-      <h5>Vinos</h5>
-      <input type="radio" id="search-vinos">
-      <h5>Whisky</h5>
-      <input type="radio" id="search-whisky">
-      <h5>Fernet</h5>
-      <input type="radio" id="search-fernet">
-      <h5>Vodka</h5>
-      <input type="radio" id="search-vodka">
-    </div>
-
-
-  </ul>
-</div>
-</div>
-<div class="col-6">
-  <img src="./img/col6.jpg" class="img-fluid">
-</div>
-</div>
-
-
-
-
-
-
-<!-- Fontawesome -->
-<script src="https://kit.fontawesome.com/3734c82eac.js" crossorigin="anonymous"></script>
-
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-
-<!-- Sweet Alert -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Toastify -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-
-
-<script src="darkMode.js"></script>
-<script src="class.js"></script>
-    <script src="main.js"></script>
-</body>
-</html>
+              <script src="app.js"></script>
+  </body>

@@ -1,10 +1,250 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100&family=Playfair+Display:ital@1&family=Tiro+Telugu&display=swap');
 *{
     font-family: 'roboto';
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* CSS archivo INDEX */
+.inicio{
+    height: 100vh;
+    background-color:rgb(15, 15, 117);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+
+}
+
+.banner-img{
+    width: 600px;
+    height: 600px;
+}
+.title{
+    color:#fff;
+    font-size: 5em;
+    text-shadow: 1px 2px #181818;
+}
+.parrafo-p{
+    color:#fff;
+    font-size:22px;
+    text-align: center;
+}
+.parraf{
+    color:#ccc;
+}
+.cta{
+    background: #181818;
+    padding: 10px;
+    text-decoration: none;
+    color:#fff;
+    border: 2px solid #ccc;
+    border-radius: 100px;
+    margin:5px 100px;
+}
+.info{
+    margin-top:0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+}
+.info__title{
+    font-size: 20px;
+    color:rgb(15, 15, 80);
+    margin:20px;
+}
+.fa-sharp{
+    margin:5px;
+}
+.contador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cuenta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.contador{
+    display: flex;
+    flex-direction: column;
+}
+
+.simply-section{
+    background-color: #fff;
+    width: 100px;
+    height: 100px;
+    margin: 0 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.simply-amount{
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+}
+.simply-word{
+    font-size: 300;
+    font-size: 20px;
+}
+
+
+/* ------------CARDS------------- */
+.btn{
+    padding: 10px;
+    border-radius: 20px;
+}
+.title-bebidas{
+    font-size: 4em;
+    text-align: center;
+    padding: 30px;
+    color:#fff;
+    text-shadow: 2px 3px #181818;
+}
+.section-bebidas{
+    background-image: linear-gradient(blue,rgb(10, 10, 151),rgb(10, 10, 65));
+    display: flex;
+    flex-direction: column;
+}
+.bebidas{
+    display: flex;
+    justify-content: space-between;
+    margin:20px;
+}
+.card-in{
+    height: auto;
+    width: 150px;
+
+}
+.img-fluid{
+    width: 262px;
+    height: 262px;
+    
+}
+.boton{
+    display: flex;
+    justify-content: center;
+}
+.boton__link{
+    padding: 20px;
+    background-color: rgb(233, 43, 43);
+    border:0.5px solid #000;
+    box-shadow: 10px 10px 15px #000;
+    border-radius:200px;
+    text-decoration: none;
+    color:#FFF;
+    margin-bottom: 2em;
+    
+}
+
+/* ----------Seccion variedad----------- */
+.variedad{
+    background:rgba(0, 0, 0, 0.1);
+    padding-top:100px;
+}
+.variedad__title{
+    font-size: 5em;
+    text-align: center;
+    padding-bottom: 1em;
+}
+strong{
+    color:rgb(214, 47, 47);
+}
+.carrusel{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap:10px;
+}
+.carrusel__img{
+    border:0.1px;
+    box-shadow: 1px 3px 1px rgb(6, 6, 71);
+    width:200px;
+    height: 200px;
+    border-radius: 100px;
+    
+}
+.carrusel__cta{
+    text-align: center;
+    background:rgb(214, 47, 47);
+    padding: 10px;
+    text-decoration: none;
+    color:#fff;
+    border: 2px solid #ccc;
+    border-radius: 100px;
+    margin:5px 100px;
+}
+.carrusel__img{
+    border-radius:100px;
+    height: 100%;
+}
+.title-func{
+    font-size: 2em;
+    text-align: start;
+    text-shadow: 1px 1px 1px #181818;
+}
+.func{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.one-two{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.parraf{
+    font-size: 20px;
+    color:#181818;
+}
+.parraf-2{
+    font-size:23px;
+    color:#000;
+    margin-top:30px;
+}
+.strong{
+    color:#181818;
+}
+.questions{
+    margin-top:70px;
+}
+
+.questions__img{
+    margin-top:4em;
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.nosotros{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image{
+    margin-top: 4em;
+}
+.image__img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+
+/* CSS archivo PRODUCTOS */
+
 .navbar{
-    background-color: #ddc699;
+    background-color: #ccc;
 }
 .container-fluid{
     display: flex;
@@ -15,6 +255,7 @@
     font-size: 4em;
     text-shadow: 1px 1px 2px grey;
 }
+
 
 .form-datos{
     margin:20px;
@@ -64,6 +305,11 @@ img{
     margin:10px;
     padding: 10px;
 }
+.filtro-radio{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
 .buscaTuBebida{
     text-align: center;
     font-size: 2em;
@@ -80,7 +326,11 @@ i{
     font-size:20px;
     color:blue;
 }
-
+#modal-body{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 /* CLase prueba ternario */
 .ofertaColor{
     color:green;
@@ -88,10 +338,12 @@ i{
 .precioComun{
     color:goldenrod;
 }
+
 #side_nav{
-    background-color: #000;
+    background-color: rgb(219, 215, 245);
     min-width: 250px;
     max-width: 250px;
+    
 }
 .content{
     min-height: 100vh;
@@ -110,5 +362,100 @@ hr.h-color{
     border-radius: 8px;
 }
 .sidebar li.active a, .sidebar li.active a:hover{
+    color:#eee;
+}
+
+/* DarkMode */
+body{
+    background-color: #f1f1f1;
+    transition:.4s ease all;
+}
+body.dark{
+    background-color: #111111;
+}
+a{
+    color:#2222;
+    text-decoration: none;
+    font-weight: 500;
+}
+nav{
+    background-color: #FEFEFE;
+    transition: .3s ease all;
+}
+body.dark nav{
+    background-color: rgb(115, 130, 170);
+    border-bottom: 1px solid #181818;
+}
+body.dark nav a{
+    color: #C8C8C8;
+}
+body.dark nav i{
+    color: #181818;
+}
+body.dark nav a:hover{
+    color: #FEFEFE;
+}
+body.dark #side_nav{
+    background-color: rgb(115, 130, 170);
+}
+body.dark #side_nav h2 h5 input{
+color:#fff;
+}
+.switch{
+    background-color: #343D5B;
+    border-radius: 1000px;
+    border: none;
+    position:relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+}
+.switch::after{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-color: #f1f1f1;
+    top:0;
+    left: 0;
+    right: unset;
+    border-radius: 100px;
+    transition:.3s ease all;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,.2);
+}
+.switch.active{
+    background-color: rgb(226, 192, 128);
     color:#000;
+}
+.switch.active::after{
+    right: 0;
+    left: unset;
+}
+.switch span{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background-color: none;
+    color:#fff;
+}
+
+
+
+
+/* clases de sweet alert */
+.swa-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+   
+}
+.swa-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#archivo{
+    display: none;
 }

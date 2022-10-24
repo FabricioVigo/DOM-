@@ -1,39 +1,22 @@
-//Dark mode
-let btnDarkMode = document.getElementById("btn-dark")
-let btnLightMode = document.getElementById("btn-light")
+const btnSwitch = document.querySelector('#switch')
 
-let modoOscuro
+btnSwitch.addEventListener('click', ()=>{
+    document.body.classList.toggle('dark')
+    btnSwitch.classList.toggle('active')
 
-localStorage.getItem("darkMode")? modoOscuro = localStorage.getItem("darkMode") : console.log("Entro por primera vez")
-localStorage.setItem("darkMode", false)
+    document.body.classList.contains('dark')? localStorage.setItem('darkMode','true') : localStorage.setItem('darkMode', 'false')
+})
 
- if(modoOscuro == "true"){
-    document.body.style.backgroundColor = "#110f2b"
-document.body.style.color = "grey"
 
+if(localStorage.getItem('darkMode') === 'true'){
+
+    document.body.classList.add('dark')
+     btnSwitch.classList.add('active')  
 }else{
-    document.body.style.backgroundColor = "#ccc"
-document.body.style.color = "grey"
-
- } 
-
- 
-
-
-//evento darkmode
-btnDarkMode.addEventListener("click",()=>{
-
- document.body.style.backgroundColor = "#110f2b"
-document.body.style.color = "antiquewhite" 
-localStorage.setItem("darkMode",true)
-})
-
-btnLightMode.addEventListener("click",()=>{
-
- document.body.style.backgroundColor = "#ccc"
-document.body.style.color = "black" 
-localStorage.setItem("darkMode",false)
+    document.body.classList.remove('dark')
+    btnSwitch.classList.remove('active')
+}
 
 
 
-})
+
