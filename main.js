@@ -1,3 +1,5 @@
+let imagen;
+
 document.addEventListener("DOMContentLoaded", ()=>{
     const archivo = document.getElementById("archivo");
     const botonFile = document.getElementById("boton-file")
@@ -5,12 +7,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
         archivo.click();
     });
     archivo.addEventListener("change", ()=>{
-        for(let i = 0 ; i < archivo.files.length; i++){
-            const element = URL.createObjectURL(archivo.files[i]);
-            const imagen = document.createElement("img")
-            imagen.src = element;
-            document.body.appendChild(imagen)
-        }
+            imagen = URL.createObjectURL(archivo.files[0]);
+            
     });
 });
 
@@ -35,12 +33,12 @@ function guardarBebida(array){
             },
           }).showToast();
     }else{
-        let imgLoaded = archivo.value
-    let bebidaIngresada = new Bebida (array.length+1, bebidaInput.value, marcaInput.value, parseInt(precioInput.value), imgLoaded);
+        
+    let bebidaIngresada = new Bebida (array.length+1, bebidaInput.value, marcaInput.value, parseInt(precioInput.value), imagen);
     
     let nuevoProducto  =  document.createElement("div")
     nuevoProducto.innerHTML = `<div id=${bebidaIngresada.id} <div class="card" style="width: 14rem;">
-    <img src="${bebidaIngresada.imgLoaded}" class="card-img-top" alt="...">
+    <img src="${bebidaIngresada.imagen}" class="card-img-top" alt="...">
     <div class="card-body">
      <h5 class="card-title">${bebidaIngresada.marca}</h5>
      <p class="card-text">${bebidaIngresada.tipo}</p>
@@ -55,17 +53,13 @@ function guardarBebida(array){
     let btnAgregar = document.getElementById(`btn-carrito${bebidaIngresada.id}`)
     console.log(btnAgregar)
     btnAgregar.addEventListener("click",()=>{
-        console.log(bebidaIngresada)
+        
 
         agregarAlCarrito(bebidaIngresada)
     })
 
-    
-    
-    
-    console.log(bebidaIngresada)
     array.push(bebidaIngresada)
-    console.log(stock)
+    
     
    
     //reset
@@ -167,11 +161,8 @@ function filtrarCerveza(){
     //boton carrito
     
     let btnAgregar = document.getElementById(`btn-carrito${bebida.id}`)
-    console.log(btnAgregar)
     btnAgregar.addEventListener("click",()=>{
-        console.log(bebida)
-
-        agregarAlCarrito(bebida)
+         agregarAlCarrito(bebida)
     })
 
     
@@ -184,7 +175,7 @@ function filtrarCerveza(){
 function filtrarVinos(){
     let filtroVino = "Vino"
     let busqueda = stock.filter((bebida)=> bebida.tipo == filtroVino)
-    console.log(busqueda)
+    
     
     divProductos.innerHTML = ""
     busqueda.forEach((bebida)=>{
@@ -208,7 +199,7 @@ function filtrarVinos(){
     let btnAgregar = document.getElementById(`btn-carrito${bebida.id}`)
     console.log(btnAgregar)
     btnAgregar.addEventListener("click",()=>{
-        console.log(bebida)
+        
 
         agregarAlCarrito(bebida)
     })
@@ -220,7 +211,7 @@ function filtrarVinos(){
 function filtrarWhisky(){
     let filtroWhisky = "Whisky"
     let busqueda = stock.filter((bebida)=> bebida.tipo == filtroWhisky)
-    console.log(busqueda)
+    
     
     divProductos.innerHTML = ""
     busqueda.forEach((bebida)=>{
@@ -242,9 +233,9 @@ function filtrarWhisky(){
     //boton carrito
     
     let btnAgregar = document.getElementById(`btn-carrito${bebida.id}`)
-    console.log(btnAgregar)
+   
     btnAgregar.addEventListener("click",()=>{
-        console.log(bebida)
+      
 
         agregarAlCarrito(bebida)
     })
@@ -256,7 +247,7 @@ function filtrarWhisky(){
 function filtrarFernet(){
     let filtroFernet = "Fernet"
     let busqueda = stock.filter((bebida)=> bebida.tipo == filtroFernet)
-    console.log(busqueda)
+    
     
     divProductos.innerHTML = ""
     busqueda.forEach((bebida)=>{
@@ -278,9 +269,9 @@ function filtrarFernet(){
     //boton carrito
     
     let btnAgregar = document.getElementById(`btn-carrito${bebida.id}`)
-    console.log(btnAgregar)
+    
     btnAgregar.addEventListener("click",()=>{
-        console.log(bebida)
+        
 
         agregarAlCarrito(bebida)
     })
@@ -291,7 +282,7 @@ function filtrarFernet(){
 function filtrarVodka(){
     let filtroVodka = "Vodka"
     let busqueda = stock.filter((bebida)=> bebida.tipo == filtroVodka)
-    console.log(busqueda)
+    
     
     divProductos.innerHTML = ""
     busqueda.forEach((bebida)=>{
@@ -313,9 +304,9 @@ function filtrarVodka(){
     //boton carrito
     
     let btnAgregar = document.getElementById(`btn-carrito${bebida.id}`)
-    console.log(btnAgregar)
+    
     btnAgregar.addEventListener("click",()=>{
-        console.log(bebida)
+       
 
         agregarAlCarrito(bebida)
     })
@@ -367,7 +358,7 @@ function filtrarVodka(){
     function filtroBusqueda(){
         nombreBuscado = inputBusqueda.value
         let busquedaInput = stock.filter((bebida)=> bebida.tipo.toLowerCase() == nombreBuscado.toLowerCase())
-        console.log(busquedaInput)
+        
 
         divProductos.innerHTML = ""
     busquedaInput.forEach((bebida)=>{
@@ -391,7 +382,7 @@ function filtrarVodka(){
     let btnAgregar = document.getElementById(`btn-carrito${bebida.id}`)
     console.log(btnAgregar)
     btnAgregar.addEventListener("click",()=>{
-        console.log(bebida)
+       
 
         agregarAlCarrito(bebida)
     })
@@ -527,3 +518,4 @@ function compraTotal(...array){
 
     acumulador == 0 ? parrafoCompra.innerHTML = ` <strong> No hay productos en el carrito </strong>` : parrafoCompra.innerHTML = `El total de su carrito es ${acumulador}`
 }   
+

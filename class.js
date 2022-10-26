@@ -66,9 +66,3 @@ const cargarStock = async ()=>{
 
 }
 cargarStock()
-
-
-
-/*  localStorage.getItem("stock")? stock = JSON.parse(localStorage.getItem("stock")) : stock.push(bebida1, bebida2, bebida3, bebida4, bebida5, bebida6, bebida7,bebida8,bebida9,bebida10,bebida11,bebida12,bebida13, bebida14,bebida15,bebida16,bebida17,bebida18,bebida19,bebida20)
-console.log(stock) */
-
